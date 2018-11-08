@@ -1,0 +1,44 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+usbMsgPtr                                                                         0x0160       2
+usbRxToken                                                                        0x0162       1
+usbConfiguration                                                                  0x0163       1
+usbTxStatus1                                                                      0x0164      12
+usbRxBuf                                                                          0x0170      22
+usbRxLen                                                                          0x0186       1
+usbTxLen                                                                          0x0187       1
+usbTxBuf                                                                          0x0188      11
+usbMsgLen                                                                         0x0193       1
+usbMsgFlags                                                                       0x0194       1
+pdata                                                                             0x0195       1
+currentAddress                                                                    0x0196       1
+bytesRemaining                                                                    0x0197       1
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+usbInputBufOffset                                                                 R5           1
+usbDeviceAddr                                                                     R4           1
+usbNewDeviceAddr                                                                  R7           1
+usbCurrentTok                                                                     R6           1
+button                                                                            R9           1
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+usbFunctionDescriptor_G000                                                        0x000A2      1
+usbCrc16Append                                                                    0x000A3      2
+usbDeviceRead_G000                                                                0x000A5     85
+usbPoll_G000                                                                      0x000FA    275
+usbInit_G000                                                                      0x0020D     13
+timer1_ovf_isr                                                                    0x0021A     72
+usbFunctionRead_G000                                                              0x00262     57
+usbFunctionWrite_G000                                                             0x0029B     59
+usbFunctionSetup_G000                                                             0x002D6     38
+main                                                                              0x002FC     59
+putchar                                                                           0x00337      7
