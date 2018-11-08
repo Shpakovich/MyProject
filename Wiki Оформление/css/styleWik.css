@@ -1,0 +1,96 @@
+
+@font-face{
+	font-family: Roboto-Regular;    
+	src: url(Roboto/Roboto-Regular.ttf);
+}
+
+body{
+	font-family: Roboto-Regular;
+	color:#222222;
+}
+
+img{
+	border-radius: 3px;
+}
+
+p{
+	text-align: justify;
+	text-indent: 40px;
+}
+
+a{
+	text-decoration: none;
+	color: #0088ff;
+}
+
+figure{
+	display:table; 
+	width:1%;
+	margin:0 0 12px 0px;
+	padding: 15px;
+	font-size:13px;
+	font-style: italic;
+	background-color: #eeeeee;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+}
+
+figcaption{
+display:block; 
+padding:3px 6px 7px 6px; 
+margin:0; 
+border:none;
+text-align:center;
+}
+
+.top{
+	width: 250px;
+	padding: 15px;
+	margin: 15px 40px 15px 40px;
+	display:table; 
+	width:1%;
+	font-size:18px;
+	font-style: oblique;
+	background-color: #eeeeee;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+}
+
+.sod{
+	width: 250px;
+	padding: 15px;
+	margin: 15px 40px 15px 40px;
+	background-color: #eeeeee;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+}
+
+#main{
+	font-weight: 500;
+}
+
+h1{
+	text-align: center;
+	size: 2rem;
+	font-weight: 400;
+	position: center;
+	border-bottom: 2px  solid #aaaaaa; 
+}
+
+h2{
+	size: 2rem;
+	font-weight: 500;
+	border-bottom: 1px solid #aaaaaa;
+}
+h3{
+	size: 1rem;
+	font-weight: 600;
+}
+h4{
+	padding: 15px;
+	margin: 15px 40px 15px 40px;
+	font-style: italic;
+	background-color: #eeeeee;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+}
