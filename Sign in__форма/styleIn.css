@@ -1,0 +1,98 @@
+body{
+	margin: 0;
+	color: ;
+	background: url(Img/Fon/work1.jpg);
+	background-size: cover; 	
+}
+
+input[type=checkbox] {
+	display: none;
+	}
+
+strong{
+	display: table-cell;
+	vertical-align: middle;
+	cursor: pointer;
+	text-align: center;
+
+}
+
+input[type=checkbox]:checked + label:before {
+	
+	content: "\2713";
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	cursor: pointer;
+	font-size: 35px;
+	color: #00ff00;
+
+	}
+
+.checkbox{
+	font-style: oblique;
+	margin-left: 200px;
+	margin-top: -70px;
+	font-size: 28px;
+	outline: none;
+	color: #000000;
+}
+
+.container{
+	margin:auto;
+	max-width: 650px;
+	min-height:480px;
+	margin-top: 14%;
+	background:url(Img/4.jpg) no-repeat center;
+	background-size: cover;
+	box-shadow:0 17px 30px 0 rgba(0,0,0,.7),0 17px 50px 0 rgba(0,0,0,.7);
+	text-align: center;
+	border-radius: 10px;
+	}
+.container img{
+	width: 280px;
+	height: 280px;
+	margin: -154px 0 30px 0;
+}
+
+#email, #nm, #pass {
+	background: url(Img/Logo/but.png);
+	width: 350px;
+	height: 40px;
+	font-size: 18px;
+	margin-bottom: 20px;
+	outline: none;
+	color: #000000;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border: 2px solid #000;
+	border-radius: 8px;
+	padding-left: 20px; 
+}
+
+
+#sub{
+	cursor: pointer;
+	background: url(Img/Logo/but.png);
+	padding: 13px 30px;
+	margin: 5px 120px 20px 0px;
+	outline: none;
+	font-size: 15px;
+	color: #000000;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border: 2px solid #000;
+	border-bottom: 5px solid #008000;
+	border-radius: 8px;
+}
+#sub:hover{
+	transition: all 0.5s;
+	border-bottom: 5px solid #00ff00;
+	color: #111111;
+	font-style: italic;
+}
+
+.fa {
+	position: center;
+	color: #ff6600;
+}
+.fa:hover{
+transition: all 0.3s;
+color: #00ff00;
+}
