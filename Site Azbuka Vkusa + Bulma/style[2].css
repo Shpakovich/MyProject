@@ -1,0 +1,256 @@
+@font-face {
+    font-family: Formular-Bold;
+   	src: url(Formular/Formular-Bold.otf); 
+}
+@font-face {
+    font-family: Formular-Medium;
+    src: url(Formular/Formular-Medium.otf); 
+}
+@font-face {
+    font-family: Formular;
+   	src: url(Formular/Formular-Regular.otf); 
+}
+
+.main{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	height: 2283px;
+	width:1200px;
+}
+header{
+	margin-top: 24px;
+	margin-bottom: 36px;
+	flex-direction: row;
+}
+.logo_img{
+    margin-left: 30px;
+	width: 204px;
+  	height: 60px;
+}
+.knopki{
+	display: flex;
+	flex-direction: row;
+}
+.text_nav{
+	font-family: Formular-Bold;
+	font-size: 28px;
+	margin-top: 5px;
+	font-weight: bold;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+.vkusc{
+	margin-right: 55px;
+}
+.kont{
+	text-align: right;
+}
+.sam_text{
+	color: #4b721d;
+}
+.sam_text:hover{
+	transition: all 0.3s;
+	color: #80bb3d;
+}
+
+
+.img_section1{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-top: 16px;
+	
+
+}
+.img1{
+	margin-left: 30px;
+	width: 750px;
+  	height: 360px;
+  	object-fit: contain;
+}
+.img2{
+	margin-right: 30px;
+	width: 360px;
+  	height: 360px;
+   	object-fit: contain;
+}
+.general_text{
+	font-family: Formular-Medium;
+	font-size: 32px;
+	padding-top: 54px;
+	margin-left: 30px;
+}
+
+
+.prices{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+	margin: 21px 0px 0px 30px ;
+  	
+}
+.produkt{
+	width: 263px;
+  	height: 384px;
+  	padding-top: 5px;
+	margin-right:29px;
+	background-color: #fefefe;
+  	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.21);
+	border-radius: 2px;
+}
+
+.text_prod{
+	font-family: Formular;
+	padding-left: 28px;
+	text-align: left;
+  	color: #515151;
+  	font-size: 21px;
+}
+.text_prod1{
+	display: flex;
+	flex-direction: column;
+	font-family: Formular;
+	padding-left: 28px;
+	text-align: left;
+  	color: #515151;
+  	font-size: 21px;
+}
+.price{
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+.price_chips{
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin-top: 30px;
+}
+.old_price{
+	margin-left: 28px;
+	font-family: Formular-Bold;
+  	font-size: 28px;
+  	font-weight: bold;
+  	text-align: left;
+  	color: #9d9d9d;
+  	text-decoration: line-through;
+}
+.new_price1{
+	padding-left: 65px;
+	font-family: Formular-Bold;
+  	font-size: 28px;
+  	font-weight: bold;
+  	text-align: right;
+  	color: #4b721d;
+}
+.new_price3{
+	padding-left: 45px;
+	font-family: Formular-Bold;
+  	font-size: 28px;
+  	font-weight: bold;
+  	text-align: right;
+  	color: #4b721d;
+}
+.new_price4{
+	padding-left: 85px;
+	font-family: Formular-Bold;
+  	font-size: 28px;
+  	font-weight: bold;
+  	text-align: right;
+  	color: #4b721d;
+}
+.new_price2{
+	font-family: Formular;
+  	font-size: 21px;
+  	text-align: right;
+  	color: #4b721d;
+	}
+
+
+
+.img_section2{
+	display: flex;
+	flex-direction: row;
+	
+	margin-top: 21px;
+}
+.img_1{
+	background: url(imgAZ/cp-1.jpg);
+	background-size: cover;
+	text-align: center;
+	line-height: 277px; 
+	margin-left: 30px;
+	width: 555px;
+  	height: 302px;
+  	border-radius: 2px;
+}
+.img_2{
+	background: url(imgAZ/cp-2.jpg);
+	background-size: cover;
+	text-align: center;
+	line-height: 277px;  
+	margin-left: 30px;
+	width: 555px;
+  	height: 302px;
+  	object-fit: contain;
+}
+.img_3{
+	background: url(imgAZ/cp-3.jpg);
+	background-size: cover; 
+	text-align: center;
+	text-align: center;
+	line-height: 325px; 
+	width: 1139px;
+  	height: 364.4px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+.text_section{
+	z-index: 1;
+	font-family: Formular-Bold;
+  	font-size: 42px;
+  	font-weight: bold;
+  	color: #ffffff;
+  	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.block {
+	display: flex;
+	flex-direction: row;
+	margin-top: 85.6px;
+  	width: 100%;
+  	height: 309px;;
+  	background-color: #f4f4f4;
+}
+.sec1{
+	padding: 10px 0 0 125px; 
+	font-family: Formular;
+  	font-size: 21px;
+  	text-align: left;
+  	color: #666666;
+  	font-weight: 500;
+}
+.logof{
+	margin: 20px 0px 128px 40px;
+}
+.sec2{
+	padding: 10px 0px 0px 30px; 
+	font-family: Formular;
+  	font-size: 21px;
+  	text-align: left;
+  	color: #666666;
+  	font-weight: 500;
+}
+
+.niz{
+	margin:15px 130px 31px 125px;
+	width: 945px;
+  	height: 60px;
+  	font-family: Formular;
+  	font-size: 16px;
+  	text-align: center;
+  	color: #c3c3c3;
+}
