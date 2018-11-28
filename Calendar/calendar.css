@@ -1,0 +1,85 @@
+body{
+	margin: 0;
+	font-family: 'Srisakdi', cursive;
+}
+.main{
+	display: flex;	
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	width: 100%;
+	min-height: 600px;
+	background:url(img/calender.jpg) no-repeat center;
+	background-size: cover;
+	align-items: center;
+}
+.main-overlain{
+	z-index: 0;
+	height: 100vh;
+	width: 100%;
+	opacity: 0.4;
+background-image: -webkit-linear-gradient(60deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%);
+background-image: -o-linear-gradient(60deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%);
+background-image: linear-gradient(150deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%); 
+}
+.dayweek{
+	display: flex;
+	justify-content: center;
+	margin-top: 20vh;
+}
+.weekp{
+	font-size: 130px;
+}
+.inputs{
+	margin-top: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.input-n{
+	text-align: center;
+	font-family: 'Srisakdi';
+	border: 3px solid #000;
+	font-size: 50px;
+	height: 130px;
+	width: 180px;
+	margin-right: 1.5rem; 
+	position: relative;
+}
+.input-n:hover{
+	box-shadow: 0 0 40px rgba(0, 0, 0);
+}
+.date{
+	display: flex;
+	flex-direction: column;
+}
+p{
+	color: #fff;
+	font-weight: bolder;
+	font-size: 35px;
+	margin: 0;
+}
+.input-b{
+	cursor: pointer;
+	z-index: 1;
+	border-radius: 10px;
+	border: 2px solid #000; 
+	font-family: 'Srisakdi';
+	font-weight: bold;
+	background-color: #4169E1;
+	color: #000;
+	font-size: 30px;
+	height: 80px;
+	width: 130px;
+	margin-top: 35px;
+	margin-right: 0.8rem;
+	text-transform: uppercase; 
+}
+.input-b:hover{
+	height: 90px;
+	width: 140px;
+	transition: all 0.5s;
+	background-color: #00ff00;
+	color: #111111;
+	font-style: italic;
+}

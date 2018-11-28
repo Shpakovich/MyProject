@@ -1,0 +1,54 @@
+var day,month,year,mes,suma,result;
+day = 0;
+month = 0;
+year = 0;
+mes = [0,31,28,31,30,31,30,31,31,30,31,30];
+suma=0;
+result=0;
+
+
+$(".input-b").click( function(){
+	day = $("#day").val();
+	month = $("#month").val();
+	alert(+day + +month);
+});
+
+
+function show()
+	{
+		$.ajax({
+			url: "fun.js"
+			cache: false;
+			success: function(html){
+				$('#weekp').html(html);
+			}
+		})
+	};
+
+$("#weekp").text(suma);
+
+
+
+
+!
+ $(".input-b").click( function(){
+	day = $("#day").val();
+	month = $("#month").val();
+	alert(+day + +month);
+});
+
+
+<?php 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+	$day = $_POST['#day'];
+	$month = $_POST['#month'];
+
+	echo $day."<br />".$month;
+}	
+else { 
+	echo "error 404"; 
+};
+
+ ?>

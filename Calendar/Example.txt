@@ -1,0 +1,22 @@
+var day,month,year,mes,suma,result;
+day = 0;
+month = 0;
+year = 0;
+mes = [0,31,59,90,120,151,181,212,243,273,304,334];
+suma=0;
+result=0;
+
+
+	
+
+
+	function gets(){
+	var a =  document.getElementById('day').value;
+	var b = document.getElementById('month').value;
+	var c = document.getElementById('year').value;
+	alert(a);
+	alert(b);
+	alert(mes);
+}
+
+	W = +day + Math.round((13 * +month - 1)/5) + +numYear + Math.round(+numYear / 4) + (+numCentury / 4) - 2 * +numCentury;
