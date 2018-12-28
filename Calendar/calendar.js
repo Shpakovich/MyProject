@@ -23,21 +23,35 @@ result=0;
 			month = +month + 10;
 		}
 
-		/*if (month > 10) {
+		if (month > 10) {
 			numYear = numYear - 1;
-		}*/
+		}
 		
-		
-		W = +day + Math.round((13 * +month - 1)/5) + +numYear + Math.round(+numYear / 4) + Math.round(+numCentury / 4) - 2 * +numCentury;
+		W = +day + Math.floor((13 * +month - 1)/5) + +numYear + Math.floor(+numYear / 4) + Math.floor(+numCentury / 4) - 2 * +numCentury;
 
 		result = Math.abs(W)%7;
 
 		if(W < 7){
-			result = 7 - W;
+			result = W;
 		}
 
-		alert(result);
-	
+	switch (result)
+		{
+		case 0:
+		alert("Sunday"); break;
+		case 1:
+		alert("Monday"); break;
+		case 2:
+		alert("Tuesday"); break;
+		case 3: 
+		alert("Wednesday"); break;
+		case 4:
+		alert("Thursday"); break;
+		case 5:
+		alert("Friday"); break;
+		case 6:
+		alert("Suturday"); break;
+		}
 }
 
 
