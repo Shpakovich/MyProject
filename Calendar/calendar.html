@@ -8,13 +8,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Srisakdi:400,700" rel="stylesheet">
 </head>
 <body>
-		<?php
-	require "php/fun.php";
-	?>
 	<div class="main">
 	<div class="main-overlain">
 		<div class="dayweek">
-			<p class="weekp" id="weekp"> It's Friday</p>
+			<p class="weekp" id="weekp"> Welcome</p>
 		</div>
 	<form action="php/fun.php" method="post">
 		<div class="inputs">
@@ -31,7 +28,7 @@
 			<input type="text" class="input-n" id="year">
 			</div>
 			<input type="button" onclick="gets()" class="input-b" name="btn" value="Input">
-			<input type="button" class="input-b" name="btn" value="Clear">
+			<input type="button" onclick="clear()" class="input-b" name="btn" value="Clear">
 		</div>
 	</form>
 	</div>

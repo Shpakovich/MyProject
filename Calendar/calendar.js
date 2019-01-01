@@ -1,9 +1,12 @@
 var W, day, month, numYear,numCentury,result;
 day = 0;
 month = 0;
-year = 0;
 result=0;
 
+	function clear(){
+		allert('pidr');
+		document.getElementById('weekp').reset();
+	}
 
 	
 	function gets(){
@@ -37,21 +40,22 @@ result=0;
 
 	switch (result)
 		{
-		case 0:
-		alert("Sunday"); break;
+		case 0:	
+		weekp.innerHTML = "It's Sunday";break;
 		case 1:
-		alert("Monday"); break;
+		weekp.innerHTML = "It's Monday"; break;
 		case 2:
-		alert("Tuesday"); break;
+		weekp.innerHTML = "It's Tuesday"; break;
 		case 3: 
-		alert("Wednesday"); break;
+		weekp.innerHTML = "It's Wednesday";break;
 		case 4:
-		alert("Thursday"); break;
+		weekp.innerHTML = "It's Thursday"; break;
 		case 5:
-		alert("Friday"); break;
+		weekp.innerHTML = "It's Friday";break;
 		case 6:
-		alert("Suturday"); break;
+		weekp.innerHTML = "It's Suturday"; break;
 		}
 }
+
 
 
