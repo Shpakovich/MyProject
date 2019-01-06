@@ -15,7 +15,7 @@ body{
 }
 .main-overlain{
 	z-index: 0;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	opacity: 0.4;
 background-image: -webkit-linear-gradient(60deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%);
@@ -24,12 +24,15 @@ background-image: linear-gradient(150deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 
 }
 .dayweek{
 	display: flex;
-	justify-content: center;
-	margin-top: 20vh;
+	flex-direction: column;
+	margin-top: 10px;
+	text-align: center;
 }
 .weekp{
 	font-size: 130px;
+	color: #fff;
 }
+
 .inputs{
 	margin-top: 10vh;
 	display: flex;

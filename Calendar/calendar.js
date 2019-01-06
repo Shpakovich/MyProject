@@ -3,13 +3,20 @@ day = 0;
 month = 0;
 result=0;
 
-	function clear(){
-		allert('pidr');
-		document.getElementById('weekp').reset();
+	function clearOut(){
+		//сброс всех параментов
+		document.getElementById('day').value = " ";
+		document.getElementById('month').value = " ";
+		document.getElementById('year').value = " ";
+		weekp.innerHTML = "Welcome";
 	}
 
 	
 	function gets(){
+		// убираем подпись под днем недели при первом запуске
+		var ps = document.querySelector(".ps");
+		ps.style.display = "none"; 
+		//
 		day = document.getElementById('day').value;
 		month = document.getElementById('month').value;
 		//разделение года на 2 части
@@ -55,7 +62,13 @@ result=0;
 		case 6:
 		weekp.innerHTML = "It's Suturday"; break;
 		}
+
+		//ошибки при неправильных значениях
+		if(month>10 || day>31){
+			weekp.innerHTML = "Error type of Date";
+		}
 }
+
 
 
 
