@@ -3,16 +3,32 @@ day = 0;
 month = 0;
 result=0;
 
+
+function NonFriday (){
+				document.getElementsByClassName('main')[0].style.background="url(img/calender.jpg) center";
+				document.getElementsByClassName('main')[0].style.backgroundSize="cover";
+				document.getElementsByClassName('main-overlain')[0].style.backgroundImage="-webkit-linear-gradient(60deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%)";
+				document.getElementsByClassName('main-overlain')[0].style.backgroundImage="-o-linear-gradient(60deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%)";
+				document.getElementsByClassName('main-overlain')[0].style.backgroundImage="linear-gradient(150deg, rgb(153, 50, 204) 0%, rgb(47, 79, 79) 100%)";
+}
+
+
 	function clearOut(){
 		//сброс всех параментов
 		document.getElementById('day').value = " ";
 		document.getElementById('month').value = " ";
 		document.getElementById('year').value = " ";
 		weekp.innerHTML = "Welcome";
+		if( day == 13 && result == 5){
+			audio.volume = 0.0;
+			NonFriday();
+			}
+
 	}
 
 	
 	function gets(){
+
 		// убираем подпись под днем недели при первом запуске
 		var ps = document.querySelector(".ps");
 		ps.style.display = "none"; 
@@ -65,14 +81,28 @@ result=0;
 		}
 
 		//ошибки при неправильных значениях
-		if(month>10 || day>31){
+		if(month>12 || day>31){
 			weekp.innerHTML = "Error type of Date";
 		}
+		
 
-		if( day == 13 && result == 6){
-			alert("uuuuuu")
+		function mus (){
+			 audio = new Audio(); // Создаём новый элемент Audio
+  			audio.src = 'audio/Undertaker.mp3'; // Указываем путь к звуку "клика"
 		}
-
+			if( day == 13 && result == 5){
+				document.getElementsByClassName('main')[0].style.background="url(img/13.gif) center";
+				weekp.innerHTML = "It's Friday of 13!";
+				document.getElementsByClassName('main')[0].style.backgroundSize="cover";
+				document.getElementsByClassName('main-overlain')[0].style.backgroundImage="none";
+			mus();
+  			audio.autoplay = true; // Автоматически запускаем
+  			audio.volume = 0.3;
+			}
+			else{
+				audio.volume = 0.0;
+				NonFriday();
+			}
 }
 
 
