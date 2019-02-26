@@ -1,0 +1,225 @@
+*, *:before, *:after {
+box-sizing: border-box;
+}
+body{
+	margin: 0;
+	font-family: 'Maven+Pro', sans-serif;
+}
+html{
+	font-size: 10px;
+}
+.main{
+color: #fff;
+display: flex;	
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+height: 100vh;
+min-height: 600px;
+background: url(../img/main-bg.jpg) no-repeat center;
+background-size: cover;
+position: relative;
+}
+
+.main-overlay{
+position: absolute;
+left: 0;top: 0;
+width: 100%;
+height: 100%;
+opacity: .8;
+z-index: 0;
+background-image: -moz-linear-gradient( 150deg, rgb(136,211,206) 0%, rgb(110,69,226) 100%);
+background-image: -webkit-linear-gradient( 150deg, rgb(136,211,206) 0%, rgb(110,69,226) 100%);
+background-image: -ms-linear-gradient( 150deg, rgb(136,211,206) 0%, rgb(110,69,226) 100%); 
+}
+.header{
+	display: flex;
+	height: 10vh;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+	position: relative;
+	z-index: 2;
+}
+.logoM{
+	margin-bottom: 13px;
+}
+.menu{
+	width: 70%;
+}
+.menu ul{
+display: flex;
+justify-content: space-around;
+list-style: none;
+}
+.menu-link{
+	color: #fff;
+	text-decoration: none;
+}
+.get-started-btn{
+	margin-left: 60px;
+	border: 1px solid #fff;
+	padding: 10px 20px;
+	border-radius: 100px;
+	text-transform: uppercase;
+}
+.main-text{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 2;
+	text-align: center;
+}
+
+.main-text span{
+	display: inline-block;
+}
+.main-text h1{
+	margin:0.5rem;
+	font-size: 60px;
+}
+.main-text span::after {
+content: '';
+height: 1px;
+width: 20px;
+display: inline-block;
+background-color: #fff;
+vertical-align: middle;
+margin-left: 10px;
+}
+.main-text span::before {
+content: '';
+height: 1px;
+width: 20px;
+display: inline-block;
+background-color: #fff;
+vertical-align: middle;
+margin-right: 10px;
+}
+.main-arrow{
+	position: relative;
+	z-index: 2;
+	height:15vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.arrow-down{
+	text-align: center;
+	line-height: 55px;
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	border-radius: 50%;
+	box-shadow: 0px 0px 18.69px 2.31px rgba(204, 204, 223, 0.5);
+}
+
+.table{
+	background-color: #f9fafc;
+	padding: 10rem;
+}
+.table-header {
+	text-align: center;
+	margin-bottom: 5rem;
+}
+.table-header p{
+	font-size: 1.8rem;
+	display: inline-block;
+	width: 40rem;
+	line-height: 1.4;
+	color: #cccfd5;
+}
+.table-header h2{
+	color: #4f4f6f;
+	font-size: 6rem;
+	margin: 0;
+}
+.table-header span{
+	color: #9fa4af;
+	text-transform: uppercase;
+	font-size: 2rem;
+}
+.table-header span::after{
+content: '';
+height: 2px;
+width: 20px;
+display: inline-block;
+background-color: #6e45e2;
+vertical-align: middle;
+margin-left: 10px;
+}
+.table-header span::before{
+content: '';
+height: 2px;
+width: 20px;
+display: inline-block;
+background-color: #6e45e2;
+vertical-align: middle;
+margin-right: 10px;
+}
+.price-tags{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.price-tag{
+	background-color: #fff;
+	border-radius: 2rem;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	align-items: center;
+	width: 35rem;	
+
+	transition: 0.3s;
+	}
+
+.price-tag:hover{
+cursor: pointer;
+box-shadow: 0px 0px 60px 10px rgba(204, 204, 223, 0.71);
+}
+.price-tag span{
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	margin-top: 3rem auto 1rem;
+}
+
+.price-tag h3{
+	font-weight: 500;
+	color: #4f4f6f;
+	font-size: 2rem;
+}
+.price-tag h4 sub{
+	font-size: 1.4rem;
+	margin: 0;
+}
+.price-tag h4 sup{
+	vertical-align: super;
+	font-size: 1.4rem;
+	margin-right: 0.5rem;
+}
+.price-tag p{
+	font-size: 1.2rem;	
+	color: #cccfd5; 
+}
+.price-btn{
+	cursor: pointer;
+	font-size: 1.1rem;
+	color: #c2c9db;
+	background-color: #ffffff;
+	border: #c2c9db 1px solid;
+	text-transform: uppercase;
+	border-radius: 100px;
+	font-weight: 300;
+	margin: 1rem auto;
+	padding: 1rem 4rem;
+	transition: 0.2s;
+}
+.price-btn:hover{
+	color: #fff;
+	background-color: #6e45e2;
+}
