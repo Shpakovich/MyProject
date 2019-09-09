@@ -1,20 +1,141 @@
+.main{
+	display: flex;
+	flex-direction: column;
+	min-height: 95vh;
+	min-width: 90vh;
+	height: 100%;
+	width: 100%;
+	border:1px solid pink;
+	background-image: url(img/liberty.jpg) ;
+}
+
+.header{
+	height: 50px;
+
+}
+h1{
+	font-family: 'Nothing You Could Do', cursive;
+	font-size: 35px;
+	margin-left: 25px;
+}
+
+
+.tables{
+display: flex;
+height: 70vh;
+}
+
+.table1{
+	width: 50%;
+	border:2px solid red;
+	opacity: 0.7;
+}
+
+.table2{
+	width: 50%;
+	border:2px solid green;
+	opacity: 0.7;
+}
+
+.test{
+	border:2px solid blue;
+}
+.help{
+	margin-left: 60px;
+	font-size: 4vh;
+	font-family: 'Shadows Into Light', bold;
+	white-space: nowrap;
+	}
 
 table{
-margin-left: 50px; 
-margin-top: 50px;
+margin-left: 0px;
+margin-top: 200px;
 background: url(img/sea.jpg);
 border-spacing: 0;
 }
 
-a{
-	cursor: pointer;
+
+input{
+	height: 5vh;
+	width: 5vh;
+	display: block;
+  	box-sizing: border-box;
+  	margin: 0 auto;
+  	background: #fff;
+  	color: #000;
+  	background: rgba(30, 52, 142, 0);
+  	text-align: center;
+ 	text-decoration: none;
 }
 
 td{
-	height: 35px;
-	width: 35px;
+	height: 5vh;
+	width: 5vh;
 	margin-bottom: 0;
 	padding: 0;
 }
 
+.footer{
+	display: flex;
+	flex-direction: row;
+	border:2px solid orange;
+	height: 21vh;
+}
 
+#ownShips{
+	display: flex;
+	flex-direction: column;
+	width : 50%;
+}
+.quantity{
+	font-size: 2.4vh;
+	color: white;
+	margin-left: 3.7vh;
+	font-family: 'Shadows Into Light', bold;
+}
+
+
+#nameShips{
+	display: flex;
+	flex-direction: row;
+}
+
+.shipsImg{
+	height: 140px;
+	width: 140px;
+	margin-top: -40px;
+	margin-left: 6px;
+}
+
+#imgShips{
+	position: relative;
+	display: inline-block;
+	white-space: nowrap;
+}
+#imgShips span{
+	position: absolute;
+	margin-left:-90px;
+    font-size: 75px;
+    opacity: 0.8;
+    color: rgb(300, 300, 300);
+}
+
+@media screen and (max-width: 1500px) {
+	table{
+	margin-left: 60px;
+	margin-top: -25px;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+
+	.tables{
+	display: flex;
+	flex-direction: column;
+	height: 70vh;
+	}
+	table{
+	margin-left: 0px;
+	margin-top: 90px;
+	}
+}
