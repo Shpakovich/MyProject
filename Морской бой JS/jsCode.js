@@ -15,7 +15,7 @@ var arrayShip = new Array();
 var wrongId = new Array();
 var oneDeckShip = new Array();
 var deck = new Array();
-
+var deckShips = new Array();
 
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 
@@ -74,12 +74,13 @@ function newShip(id){
 
 				if(oneDeckShip.indexOf(onlyId)>-1){
 					
-					("SomeDeck ship");
+					alert("SomeDeck ship");
 					checkField = 1;
 				}
 
 				if(checkField == 0){	
-					deck = [];
+					oneDeckShip = [];
+					alert("reset" + oneDeckShip);
 					alert("пустой массив новый корабль" + deck);
 					for(position = 0;position < 4; position++)
 					{
@@ -93,7 +94,6 @@ function newShip(id){
 			if (checkTest == 0) {	
 				for(position = 0;position < oneDeckShip.length; position++)
 				{
-						//alert(deck);
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
 				}
 
@@ -138,10 +138,10 @@ function newShip(id){
 							});
 							alert("Array2 new " + filtered);	
 							var maxValueNew = filtered.length;
-								alert(maxValueNew);	
+							alert(maxValueNew);
+
 				}
 
-								
 								var maxValue = Math.max.apply(null,deck);
 								//alert(oneDeckShip);
 								//alert(deck);
