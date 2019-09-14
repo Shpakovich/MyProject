@@ -20,7 +20,6 @@ var deckShips = new Array();
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 
 
-//document.getElementById('oneDeck').innerHTML = oneDeck;
 	
 			var table1 = document.getElementById('tableShot');
 			table1.style.opacity = "0.4";
