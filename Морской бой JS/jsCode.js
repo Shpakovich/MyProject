@@ -15,6 +15,7 @@ var arrayShip = new Array();
 var wrongId = new Array();
 var oneDeckShip = new Array();
 var deck = new Array();
+var continueShips = new Array();
 var deckShips = new Array();
 
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
@@ -78,9 +79,6 @@ function newShip(id){
 				}
 
 				if(checkField == 0){	
-					oneDeckShip = [];
-					alert("reset" + oneDeckShip);
-					alert("пустой массив новый корабль" + deck);
 					for(position = 0;position < 4; position++)
 					{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
@@ -88,6 +86,39 @@ function newShip(id){
 						checkTest = 1;
 					}
 				}
+
+
+
+			/*if(checkField == 1){
+				alert(arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 1);
+				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') - 1;
+				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') - 10;
+				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') -0 + 1;
+				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') -0 + 10;
+				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 1;
+				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 - 1;
+				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 10;
+				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 - 10;
+
+				alert("ВАЖНО !! " + onlyId);
+				alert("ВАЖНО СЕЙЧАС ! " + continueShips);
+				if (continueShips.indexOf(onlyId) == -1) {
+					deckShips[deckShips.length] = arrayShip;
+					arrayShip = []; 
+					alert("Okey " + arrayShip);
+				}
+			}*/
+
+		if (checkField === 1) 
+		{
+			var first = Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10;
+			var sec = Math.floor(arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0) /10;
+			alert(first + sec);
+
+			if (first == sec) {
+				alert("aliluaaa");
+			}
+		}
 
 				// запись в массив deck 
 			if (checkTest == 0) {	
