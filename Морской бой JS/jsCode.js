@@ -17,6 +17,9 @@ var oneDeckShip = new Array();
 var deck = new Array();
 var continueShips = new Array();
 var deckShips = new Array();
+var posibleId = new Array();
+var resetID = new Array();
+
 
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 
@@ -25,12 +28,13 @@ var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 			var table1 = document.getElementById('tableShot');
 			table1.style.opacity = "0.4";
 
-function newShip(id){
+function newShip(id)
+{
 	var changeEl = document.getElementById(id);
 	var checkField = 0;
 	var checkTest = 0;
 	for (;arrayShip.length < 16; arrayShip.length + 1)
-		{
+	{
 			
 			if(arrayShip.indexOf(id) > -1){
 					alert("alarm!");
@@ -85,8 +89,13 @@ function newShip(id){
 						alert(deck);
 						checkTest = 1;
 					}
+							resetID = [];
+							posibleId[posibleId.length] = onlyId + 1;
+							posibleId[posibleId.length] = onlyId + 10;
+							posibleId[posibleId.length] = onlyId - 1;
+							posibleId[posibleId.length] = onlyId - 10;
+							alert(posibleId + "  oneDeck  "+ resetID);
 				}
-
 
 
 			/*if(checkField == 1){
@@ -109,15 +118,34 @@ function newShip(id){
 				}
 			}*/
 
+
+		// это историческая хуйня!
 		if (checkField === 1) 
 		{
+			// проверка направления корабля
 			var first = Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10;
-			var sec = Math.floor(arrayShip[1].replace(/[^+\d]/g, '') - 0) /10;
-
-			if (first == sec) {
-				var direction = "sring";
-			}else
+			var sec = Math.floor(onlyId) /10;
+			resetID = [];
+			if (Math.floor(first) == Math.floor(sec)) {
+				var direction = "line";
+				
+				posibleId[posibleId.length] = onlyId + 1;
+				posibleId[posibleId.length] = onlyId - 1;
+				resetID[resetID.length] = Math.min.apply(null,posibleId);
+				resetID[resetID.length] = Math.max.apply(null,posibleId);
+			}else{
+				var direction = "column";
+				posibleId[posibleId.length] = onlyId + 10;
+				posibleId[posibleId.length] = onlyId - 10;
+				resetID[resetID.length] = Math.min.apply(null,posibleId);
+				resetID[resetID.length] = Math.max.apply(null,posibleId);
+			}
+			alert(posibleId + "   "+ resetID);
 		}
+
+
+
+
 
 				// запись в массив deck 
 			if (checkTest == 0) {	
@@ -130,7 +158,8 @@ function newShip(id){
 				alert(oneDeckShip);
 			}
 			
-			if (checkField === 1) {
+			if (checkField === 1) 
+			{
 						alert("new code");
 						var overlap = new Array();
 						var overlap2 = new Array();
@@ -168,8 +197,7 @@ function newShip(id){
 							alert("Array2 new " + filtered);	
 							var maxValueNew = filtered.length;
 							alert(maxValueNew);
-
-				}
+			}
 
 								var maxValue = Math.max.apply(null,deck);
 								//alert(oneDeckShip);
@@ -212,9 +240,8 @@ function newShip(id){
 				}
 				
 			return arrayShip;
-		}
+	}
 }
-
 
 function shot(id){
 	var equivalentId = id.replace(/[^+\d]/g, '') - 100;
