@@ -112,12 +112,11 @@ function newShip(id){
 		if (checkField === 1) 
 		{
 			var first = Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10;
-			var sec = Math.floor(arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0) /10;
-			alert(first + sec);
+			var sec = Math.floor(arrayShip[1].replace(/[^+\d]/g, '') - 0) /10;
 
 			if (first == sec) {
-				alert("aliluaaa");
-			}
+				var direction = "sring";
+			}els
 		}
 
 				// запись в массив deck 
