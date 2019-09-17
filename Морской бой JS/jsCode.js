@@ -12,6 +12,7 @@ el2.onclick = function() {
 }
 */
 var arrayShip = new Array();
+var grandArrayShip = new Array();
 var wrongId = new Array();
 var oneDeckShip = new Array();
 var deck = new Array();
@@ -89,6 +90,7 @@ function newShip(id)
 						alert(deck);
 						checkTest = 1;
 					}
+							// чистим resetID,записываем в posibleId значения продолжения корабля
 							resetID = [];
 							posibleId[posibleId.length] = onlyId + 1;
 							posibleId[posibleId.length] = onlyId + 10;
@@ -96,8 +98,14 @@ function newShip(id)
 							posibleId[posibleId.length] = onlyId - 10;
 							alert(posibleId + "  oneDeck  "+ resetID);
 				}
-
-
+				// если вторая ячейка корабля и он идёт в линию чистим posibleId от значений -10 и +10
+				if (arrayShip.length == 1) {
+					if (Math.floor(Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10) == Math.floor(Math.floor(onlyId) /10)) {
+					posibleId[0] = posibleId[0];
+					posibleId[1] = posibleId[2];
+					posibleId.length = 2;
+					}
+				}
 			/*if(checkField == 1){
 				alert(arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 1);
 				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') - 1;
@@ -128,7 +136,6 @@ function newShip(id)
 			resetID = [];
 			if (Math.floor(first) == Math.floor(sec)) {
 				var direction = "line";
-				
 				posibleId[posibleId.length] = onlyId + 1;
 				posibleId[posibleId.length] = onlyId - 1;
 				resetID[resetID.length] = Math.min.apply(null,posibleId);
@@ -143,8 +150,14 @@ function newShip(id)
 			alert(posibleId + "   "+ resetID);
 		}
 
-
-
+		// если новый корабль не в posibleId, то запись arrayShip в grandArrayShip
+		if (posibleId.indexOf(onlyId) == -1) {
+			alert(arrayShip);
+			if (grandArrayShip.length < 1) {
+			grandArrayShip[grandArrayShip.length] = arrayShip;
+			}
+			alert("grandArrayShip! " + grandArrayShip); 
+		}
 
 
 				// запись в массив deck 
