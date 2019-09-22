@@ -75,7 +75,6 @@ function newShip(id)
 						/*for (var i = 0; i < oneDeckShip.length; i++) {
 					alert(oneDeckShip[i] == onlyId);
 				}*/
-				alert(checkField);
 
 				if(oneDeckShip.indexOf(onlyId)>-1){
 					
@@ -160,6 +159,15 @@ function newShip(id)
 			if (grandArrayShip.length < 100) {
 			grandArrayShip[grandArrayShip.length] = arrayShip;
 			}
+
+			grandArrayShip[grandArrayShip.length ] = arrayShip;
+			arrayShip = [];
+				if(checkField == 0){
+					//arrayShip = [];
+					alert("hule ne working " + arrayShip);
+				}
+
+			alert(grandArrayShip.length);
 			alert("grandArrayShip! " + grandArrayShip); 
 		}
 
