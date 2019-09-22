@@ -83,7 +83,10 @@ function newShip(id)
 					checkField = 1;
 				}
 
-				if(checkField == 0){	
+				if(checkField == 0){
+				// сброс posibleId при начале нового корабля т.к. новые значения корабля	
+					posibleId = [];
+					alert(posibleId);
 					for(position = 0;position < 4; position++)
 					{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
@@ -153,7 +156,8 @@ function newShip(id)
 		// если новый корабль не в posibleId, то запись arrayShip в grandArrayShip
 		if (posibleId.indexOf(onlyId) == -1) {
 			alert(arrayShip);
-			if (grandArrayShip.length < 1) {
+			arrayShip = [];
+			if (grandArrayShip.length < 100) {
 			grandArrayShip[grandArrayShip.length] = arrayShip;
 			}
 			alert("grandArrayShip! " + grandArrayShip); 
@@ -166,9 +170,6 @@ function newShip(id)
 				{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
 				}
-
-				alert(arrayShip);
-				alert(oneDeckShip);
 			}
 			
 			if (checkField === 1) 
