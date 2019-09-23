@@ -20,6 +20,7 @@ var continueShips = new Array();
 var deckShips = new Array();
 var posibleId = new Array();
 var grandPosibleId = new Array();
+var grandPosibleIdNum = new Array();
 var resetID = new Array();
 
 
@@ -150,33 +151,28 @@ function newShip(id)
 			alert(posibleId + "   "+ resetID);
 		}
 
-		// если новый корабль не в posibleId, то запись arrayShip в grandArrayShip
+		// если новый корабль не в posibleId, то запись arrayShip в grandArrayShip и сброс arrayShip
 		if (posibleId.indexOf(onlyId) == -1) {
-			alert(arrayShip);
 			arrayShip = [];
 			if (grandArrayShip.length < 100) {
 			grandArrayShip[grandArrayShip.length] = arrayShip;
 			}
-				if(checkField == 0){
-					//arrayShip = [];
-				}
 		}
 
 		// проверка поз-ции нового корабля, нету ли его рядом со старым
 		grandPosibleId[grandPosibleId.length] = posibleId;
-		// сравнение эл-ты массива grandPosibleId, на тип и приведение к number для поиска
-		var posId = grandPosibleId[1] - 0;
-		alert(typeof posId );
-		alert(typeof onlyId);
-
-		alert("grandPosibleId  " +grandPosibleId + " -onlyId  " + onlyId);
-
-
-		alert(grandPosibleId.indexOf(onlyId)); // заменить grandPosibleId на posId, понять почему эл-ты обьектные а не числа 
-
-		if (grandPosibleId.indexOf(onlyId) > -1) {
-			alert("here is ships!!! ")
+		//раскрытие двухмерного массива grandPosibleId[] в одномерный grandPosibleIdNum
+		grandPosibleIdNum = [].concat(...grandPosibleId);
+		//поиск текущего ID в значениях массива grandPosibleIdNum
+		if (grandPosibleIdNum.indexOf(onlyId) > -1) {
+			alert("here is ships!!! "); //рядом стоит корабль
 		}
+		/*добавить условие, что при поподании в here is ships!!!
+		проверяются поля рядом и при совпадении grandArrayShip
+		считается палубы корабле, else остаётся без изменений
+		*/
+
+
 
 				// запись в массив deck 
 			if (checkTest == 0) {	
@@ -192,6 +188,7 @@ function newShip(id)
 						var overlap = new Array();
 						var overlap2 = new Array();
 
+						// не работает
 						if(oneDeckShip.indexOf(onlyId) == -1){
 							overlap = [];
 							overlap2 = [];
