@@ -19,6 +19,7 @@ var deck = new Array();
 var continueShips = new Array();
 var deckShips = new Array();
 var posibleId = new Array();
+var grandPosibleId = new Array();
 var resetID = new Array();
 
 
@@ -77,15 +78,12 @@ function newShip(id)
 				}*/
 
 				if(oneDeckShip.indexOf(onlyId)>-1){
-					
-					alert("SomeDeck ship");
 					checkField = 1;
 				}
 
 				if(checkField == 0){
 				// сброс posibleId при начале нового корабля т.к. новые значения корабля	
 					posibleId = [];
-					alert(posibleId);
 					for(position = 0;position < 4; position++)
 					{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
@@ -98,7 +96,7 @@ function newShip(id)
 							posibleId[posibleId.length] = onlyId + 10;
 							posibleId[posibleId.length] = onlyId - 1;
 							posibleId[posibleId.length] = onlyId - 10;
-							alert(posibleId + "  oneDeck  "+ resetID);
+							//alert(posibleId + "  oneDeck  "+ resetID);
 				}
 				// если вторая ячейка корабля и он идёт в линию чистим posibleId от значений -10 и +10
 				if (arrayShip.length == 1) {
@@ -159,18 +157,26 @@ function newShip(id)
 			if (grandArrayShip.length < 100) {
 			grandArrayShip[grandArrayShip.length] = arrayShip;
 			}
-
-			grandArrayShip[grandArrayShip.length ] = arrayShip;
-			arrayShip = [];
 				if(checkField == 0){
 					//arrayShip = [];
-					alert("hule ne working " + arrayShip);
 				}
-
-			alert(grandArrayShip.length);
-			alert("grandArrayShip! " + grandArrayShip); 
 		}
 
+		// проверка поз-ции нового корабля, нету ли его рядом со старым
+		grandPosibleId[grandPosibleId.length] = posibleId;
+		// сравнение эл-ты массива grandPosibleId, на тип и приведение к number для поиска
+		var posId = grandPosibleId[1] - 0;
+		alert(typeof posId );
+		alert(typeof onlyId);
+
+		alert("grandPosibleId  " +grandPosibleId + " -onlyId  " + onlyId);
+
+
+		alert(grandPosibleId.indexOf(onlyId)); // заменить grandPosibleId на posId, понять почему эл-ты обьектные а не числа 
+
+		if (grandPosibleId.indexOf(onlyId) > -1) {
+			alert("here is ships!!! ")
+		}
 
 				// запись в массив deck 
 			if (checkTest == 0) {	
