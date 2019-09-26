@@ -13,11 +13,13 @@ el2.onclick = function() {
 */
 var arrayShip = new Array();
 var grandArrayShip = new Array();
+var grandArrayShipNum = new Array();
 var wrongId = new Array();
 var oneDeckShip = new Array();
 var deck = new Array();
 var continueShips = new Array();
 var deckShips = new Array();
+var nearIdPosition = new Array();
 var posibleId = new Array();
 var grandPosibleId = new Array();
 var grandPosibleIdNum = new Array();
@@ -165,14 +167,46 @@ function newShip(id)
 		grandPosibleIdNum = [].concat(...grandPosibleId);
 		//поиск текущего ID в значениях массива grandPosibleIdNum
 		if (grandPosibleIdNum.indexOf(onlyId) > -1) {
-			alert("here is ships!!! "); //рядом стоит корабль
+			nearIdPosition = [];
+			nearIdPosition[nearIdPosition.length] = onlyId + 1;
+			nearIdPosition[nearIdPosition.length] = onlyId + 10;
+			nearIdPosition[nearIdPosition.length] = onlyId - 1;
+			nearIdPosition[nearIdPosition.length] = onlyId - 10;
+			alert("here is ships!!! " + nearIdPosition); //рядом стоит корабль
+			// делаем из многомерного массива grandArrayShip одномерный grandArrayShipNum c типом num
+ 			grandArrayShipNum = [].concat(...grandArrayShip);
+			for (var i = 0; i < grandArrayShipNum.length; i++) {
+				grandArrayShipNum[i] = grandArrayShipNum[i].replace(/[^+\d]/g, '') - 0;
+			}
+
+			alert(grandArrayShipNum + " a nu ka");
+			alert(grandArrayShipNum.length + " kol-vo");
+				for (checkPoint = 0; checkPoint < nearIdPosition.length; checkPoint++) {
+
+					for (cP = 0; cP < grandArrayShipNum.length; cP++) {
+						//alert((grandArrayShipNum[cP] + "").replace(/[^+\d]/g, '') - 0);
+						var nearId = (grandArrayShipNum[cP] + "").replace(/[^+\d]/g, '') - 0;
+						alert( nearId +" nearId   " +grandArrayShipNum);
+						alert( nearIdPosition[checkPoint] + " nearIdPosition  " + nearIdPosition);
+							if (nearId == nearIdPosition[checkPoint]) {
+								var qShips = nearId + (nearId  - onlyId);
+								alert("1 OMG ITS COOL: " + qShips);
+									if(grandArrayShipNum.indexOf(qShips) > -1){
+										qShips = qShips + (qShips - nearId);
+										alert("2 OMG ITS COOL: " + qShips);
+											if (grandArrayShipNum.indexOf(qShips) > -1) {
+												qShips = qShips + (qShips - nearId);
+												alert("3 OMG ITS COOL: " + qShips);
+											}
+									}
+							}
+					}
+				}
 		}
 		/*добавить условие, что при поподании в here is ships!!!
 		проверяются поля рядом и при совпадении grandArrayShip
 		считается палубы корабле, else остаётся без изменений
 		*/
-
-
 
 				// запись в массив deck 
 			if (checkTest == 0) {	
