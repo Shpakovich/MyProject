@@ -25,7 +25,7 @@ var grandPosibleId = new Array();
 var grandPosibleIdNum = new Array();
 var resetID = new Array();
 
-
+var checkQuantityShips = 0;
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 
 
@@ -38,6 +38,8 @@ function newShip(id)
 	var changeEl = document.getElementById(id);
 	var checkField = 0;
 	var checkTest = 0;
+	checkQuantityShips = 0;
+
 	for (;arrayShip.length < 16; arrayShip.length + 1)
 	{
 			
@@ -75,17 +77,14 @@ function newShip(id)
 				oneDeckShip[oneDeckShip.length]=onlyId -0 +1;
 				oneDeckShip[oneDeckShip.length]=onlyId -0 +10;
 
-				//сброс массива если id не попадает в позиции oneDeckShip(то есть многопалубный)
-						/*for (var i = 0; i < oneDeckShip.length; i++) {
-					alert(oneDeckShip[i] == onlyId);
-				}*/
 
 				if(oneDeckShip.indexOf(onlyId)>-1){
 					checkField = 1;
 				}
 
 				if(checkField == 0){
-				// сброс posibleId при начале нового корабля т.к. новые значения корабля	
+				// сброс posibleId при начале нового корабля т.к. новые значения корабля
+					checkQuantityShips = 1;
 					posibleId = [];
 					for(position = 0;position < 4; position++)
 					{
@@ -109,25 +108,6 @@ function newShip(id)
 					posibleId.length = 2;
 					}
 				}
-			/*if(checkField == 1){
-				alert(arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 1);
-				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') - 1;
-				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') - 10;
-				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') -0 + 1;
-				continueShips[continueShips.length] = arrayShip[0].replace(/[^+\d]/g, '') -0 + 10;
-				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 1;
-				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 - 1;
-				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 + 10;
-				continueShips[continueShips.length] = arrayShip[arrayShip.length - 1].replace(/[^+\d]/g, '') - 0 - 10;
-
-				alert("ВАЖНО !! " + onlyId);
-				alert("ВАЖНО СЕЙЧАС ! " + continueShips);
-				if (continueShips.indexOf(onlyId) == -1) {
-					deckShips[deckShips.length] = arrayShip;
-					arrayShip = []; 
-					alert("Okey " + arrayShip);
-				}
-			}*/
 
 
 		// это историческая хуйня!
@@ -190,14 +170,23 @@ function newShip(id)
 						alert( nearIdPosition[checkPoint] + " nearIdPosition  " + nearIdPosition);
 							if (nearId == nearIdPosition[checkPoint]) {
 								var qShips = nearId + (nearId  - onlyId);
-								alert("1 OMG ITS COOL: " + qShips);
+								var qShips2;
+								var qShips3;
+								checkQuantityShips = 2;
+								alert("Its two Deck Ship!!! " + qShips);
 									if(grandArrayShipNum.indexOf(qShips) > -1){
-										qShips = qShips + (qShips - nearId);
-										alert("2 OMG ITS COOL: " + qShips);
-											if (grandArrayShipNum.indexOf(qShips) > -1) {
-												qShips = qShips + (qShips - nearId);
-												alert("3 OMG ITS COOL: " + qShips);
+										qShips2 = qShips + (qShips - nearId);
+										checkQuantityShips = 3;
+										alert("Its three Deck Ship!!! " + qShips2);
+											if (grandArrayShipNum.indexOf(qShips2) > -1) {
+												qShips3 = qShips2 + (qShips2 - qShips);
+												checkQuantityShips = 4;
+												alert("Its Four Deck Ship!!! " + qShips3);
 											}
+												if (grandArrayShipNum.indexOf(qShips3) > -1) {
+													alert("omg 5 Deck!!! " + qShips3);
+													checkQuantityShips = 5;
+												}
 									}
 							}
 					}
@@ -262,30 +251,30 @@ function newShip(id)
 								//alert(oneDeckShip);
 								//alert(deck);
 
-				if (maxValue == -1) {
+				if (checkQuantityShips == 1) {
 						oneDeck --;
 						document.getElementById('oneDeck').innerHTML = oneDeck;
 				}
-				if (maxValueNew == 1) {
+				if (checkQuantityShips == 2) {
 						twoDeck --;
 						document.getElementById('twoDeck').innerHTML = twoDeck;
 						oneDeck ++;
 						document.getElementById('oneDeck').innerHTML = oneDeck;
 				}
-				if (maxValueNew == 2) {
+				if (checkQuantityShips == 3) {
 						threeDeck --;
 						document.getElementById('threeDeck').innerHTML = threeDeck;
 						twoDeck ++;
 						document.getElementById('twoDeck').innerHTML = twoDeck;
 				}
-				if (maxValueNew == 3) {
+				if (checkQuantityShips == 4) {
 						fourDeck --;
 						document.getElementById('fourDeck').innerHTML = fourDeck;
 						threeDeck ++;
 						document.getElementById('threeDeck').innerHTML = threeDeck;
 				}
 
-				if(maxValueNew > 3){
+				if(checkQuantityShips == 5){
 						alert("Вы не можете строить более 4 палубного корабля");
 						return arrayShip;
 				}
