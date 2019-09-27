@@ -109,7 +109,7 @@ function newShip(id)
 					}
 				}
 
-
+ if (arrayShip.length > 0){
 		// это историческая хуйня!
 		if (checkField === 1) 
 		{
@@ -132,7 +132,7 @@ function newShip(id)
 			}
 			alert(posibleId + "   "+ resetID);
 		}
-
+}
 		// если новый корабль не в posibleId, то запись arrayShip в grandArrayShip и сброс arrayShip
 		if (posibleId.indexOf(onlyId) == -1) {
 			arrayShip = [];
@@ -186,6 +186,7 @@ function newShip(id)
 												if (grandArrayShipNum.indexOf(qShips3) > -1) {
 													alert("omg 5 Deck!!! " + qShips3);
 													checkQuantityShips = 5;
+													return arrayShip;
 												}
 									}
 							}
