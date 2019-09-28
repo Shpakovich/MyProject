@@ -110,6 +110,7 @@ function newShip(id)
 				}
 
  if (arrayShip.length > 0){
+ alert("dont work");
 		// это историческая хуйня!
 		if (checkField === 1) 
 		{
@@ -145,6 +146,7 @@ function newShip(id)
 		grandPosibleId[grandPosibleId.length] = posibleId;
 		//раскрытие двухмерного массива grandPosibleId[] в одномерный grandPosibleIdNum
 		grandPosibleIdNum = [].concat(...grandPosibleId);
+		alert(grandPosibleIdNum);
 		//поиск текущего ID в значениях массива grandPosibleIdNum
 		if (grandPosibleIdNum.indexOf(onlyId) > -1) {
 			nearIdPosition = [];
@@ -159,15 +161,14 @@ function newShip(id)
 				grandArrayShipNum[i] = grandArrayShipNum[i].replace(/[^+\d]/g, '') - 0;
 			}
 
-			alert(grandArrayShipNum + " a nu ka");
-			alert(grandArrayShipNum.length + " kol-vo");
+			//alert(grandArrayShipNum + " a nu ka");
 				for (checkPoint = 0; checkPoint < nearIdPosition.length; checkPoint++) {
 
 					for (cP = 0; cP < grandArrayShipNum.length; cP++) {
 						//alert((grandArrayShipNum[cP] + "").replace(/[^+\d]/g, '') - 0);
 						var nearId = (grandArrayShipNum[cP] + "").replace(/[^+\d]/g, '') - 0;
-						alert( nearId +" nearId   " +grandArrayShipNum);
-						alert( nearIdPosition[checkPoint] + " nearIdPosition  " + nearIdPosition);
+						/*alert( nearId +" nearId   " +grandArrayShipNum);
+						alert( nearIdPosition[checkPoint] + " nearIdPosition  " + nearIdPosition);*/
 							if (nearId == nearIdPosition[checkPoint]) {
 								var qShips = nearId + (nearId  - onlyId);
 								var qShips2;
