@@ -39,6 +39,7 @@ function newShip(id)
 	var checkField = 0;
 	var checkTest = 0;
 	checkQuantityShips = 0;
+	var clearWrongId = true;
 
 	for (;arrayShip.length < 16; arrayShip.length + 1)
 	{
@@ -50,26 +51,7 @@ function newShip(id)
 			
 			var onlyId = id.replace(/[^+\d]/g, '') - 0;
 
-			if(wrongId.indexOf(onlyId) > -1){
-				alert("Dont do This!");
-				return arrayShip;
-			}
 
-			// Обработка края поля и добавления WrongId
-			if (((onlyId%10)!=0)&&((onlyId%10)!=1)) {
-			wrongId[wrongId.length] = onlyId - 11;
-			wrongId[wrongId.length] = onlyId - 9;
-			wrongId[wrongId.length] = onlyId - 0 + 9;
-			wrongId[wrongId.length] = onlyId -0 + 11;
-			}
-			if ((onlyId%10)==0) {
-			wrongId[wrongId.length] = onlyId - 11;
-			wrongId[wrongId.length] = onlyId - 0 + 9;
-			}
-			if ((onlyId%10)==1) {
-			wrongId[wrongId.length] = onlyId - 9;
-			wrongId[wrongId.length] = onlyId - 0 + 11;
-			}
 
 				//подсчёт возможных продолжений для многопалубника
 				oneDeckShip[oneDeckShip.length]=onlyId -10;
@@ -89,7 +71,7 @@ function newShip(id)
 					for(position = 0;position < 4; position++)
 					{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
-						alert(deck);
+						//alert(deck);
 						checkTest = 1;
 					}
 							// чистим resetID,записываем в posibleId значения продолжения корабля
@@ -109,31 +91,33 @@ function newShip(id)
 					}
 				}
 
- if (arrayShip.length > 0){
- alert("dont work");
-		// это историческая хуйня!
-		if (checkField === 1) 
-		{
-			// проверка направления корабля
-			var first = Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10;
-			var sec = Math.floor(onlyId) /10;
-			resetID = [];
-			if (Math.floor(first) == Math.floor(sec)) {
-				var direction = "line";
-				posibleId[posibleId.length] = onlyId + 1;
-				posibleId[posibleId.length] = onlyId - 1;
-				resetID[resetID.length] = Math.min.apply(null,posibleId);
-				resetID[resetID.length] = Math.max.apply(null,posibleId);
-			}else{
-				var direction = "column";
-				posibleId[posibleId.length] = onlyId + 10;
-				posibleId[posibleId.length] = onlyId - 10;
-				resetID[resetID.length] = Math.min.apply(null,posibleId);
-				resetID[resetID.length] = Math.max.apply(null,posibleId);
+
+ 			if (arrayShip.length > 0){
+				// это историческая хуйня!
+			
+				if (checkField === 1) 
+				{
+					// проверка направления корабля
+					var first = Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10;
+					var sec = Math.floor(onlyId) /10;
+					resetID = [];
+					if (Math.floor(first) == Math.floor(sec)) {
+						var direction = "line";
+						posibleId[posibleId.length] = onlyId + 1;
+						posibleId[posibleId.length] = onlyId - 1;
+						resetID[resetID.length] = Math.min.apply(null,posibleId);
+						resetID[resetID.length] = Math.max.apply(null,posibleId);
+					}else{
+						var direction = "column";
+						posibleId[posibleId.length] = onlyId + 10;
+						posibleId[posibleId.length] = onlyId - 10;
+						resetID[resetID.length] = Math.min.apply(null,posibleId);
+						resetID[resetID.length] = Math.max.apply(null,posibleId);
+					}
+					//alert(posibleId + "   "+ resetID);
+				}
 			}
-			alert(posibleId + "   "+ resetID);
-		}
-}
+
 		// если новый корабль не в posibleId, то запись arrayShip в grandArrayShip и сброс arrayShip
 		if (posibleId.indexOf(onlyId) == -1) {
 			arrayShip = [];
@@ -146,7 +130,6 @@ function newShip(id)
 		grandPosibleId[grandPosibleId.length] = posibleId;
 		//раскрытие двухмерного массива grandPosibleId[] в одномерный grandPosibleIdNum
 		grandPosibleIdNum = [].concat(...grandPosibleId);
-		alert(grandPosibleIdNum);
 		//поиск текущего ID в значениях массива grandPosibleIdNum
 		if (grandPosibleIdNum.indexOf(onlyId) > -1) {
 			nearIdPosition = [];
@@ -161,14 +144,11 @@ function newShip(id)
 				grandArrayShipNum[i] = grandArrayShipNum[i].replace(/[^+\d]/g, '') - 0;
 			}
 
-			//alert(grandArrayShipNum + " a nu ka");
 				for (checkPoint = 0; checkPoint < nearIdPosition.length; checkPoint++) {
 
 					for (cP = 0; cP < grandArrayShipNum.length; cP++) {
 						//alert((grandArrayShipNum[cP] + "").replace(/[^+\d]/g, '') - 0);
 						var nearId = (grandArrayShipNum[cP] + "").replace(/[^+\d]/g, '') - 0;
-						/*alert( nearId +" nearId   " +grandArrayShipNum);
-						alert( nearIdPosition[checkPoint] + " nearIdPosition  " + nearIdPosition);*/
 							if (nearId == nearIdPosition[checkPoint]) {
 								var qShips = nearId + (nearId  - onlyId);
 								var qShips2;
@@ -185,6 +165,7 @@ function newShip(id)
 												alert("Its Four Deck Ship!!! " + qShips3);
 											}
 												if (grandArrayShipNum.indexOf(qShips3) > -1) {
+													clearWrongId = false;
 													alert("omg 5 Deck!!! " + qShips3);
 													checkQuantityShips = 5;
 													return arrayShip;
@@ -194,6 +175,29 @@ function newShip(id)
 					}
 				}
 		}
+			if(clearWrongId) // при условии что onlyId в правильном положении
+			{
+				// Обработка края поля и добавления WrongId
+				if (((onlyId%10)!=0)&&((onlyId%10)!=1)) {
+					wrongId[wrongId.length] = onlyId - 11;
+					wrongId[wrongId.length] = onlyId - 9;
+					wrongId[wrongId.length] = onlyId - 0 + 9;
+					wrongId[wrongId.length] = onlyId -0 + 11;
+				}
+				if ((onlyId%10)==0) {
+					wrongId[wrongId.length] = onlyId - 11;
+					wrongId[wrongId.length] = onlyId - 0 + 9;
+				}
+				if ((onlyId%10)==1) {
+					wrongId[wrongId.length] = onlyId - 9;
+					wrongId[wrongId.length] = onlyId - 0 + 11;
+				}
+
+				if(wrongId.indexOf(onlyId) > -1){
+					alert("Dont do This!");
+					return arrayShip;
+				}
+			}
 		/*добавить условие, что при поподании в here is ships!!!
 		проверяются поля рядом и при совпадении grandArrayShip
 		считается палубы корабле, else остаётся без изменений
@@ -207,7 +211,7 @@ function newShip(id)
 				}
 			}
 			
-			if (checkField === 1) 
+			/*if (checkField === 1) 
 			{
 						alert("new code");
 						var overlap = new Array();
@@ -247,7 +251,7 @@ function newShip(id)
 							alert("Array2 new " + filtered);	
 							var maxValueNew = filtered.length;
 							alert(maxValueNew);
-			}
+			}*/
 
 								var maxValue = Math.max.apply(null,deck);
 								//alert(oneDeckShip);
@@ -285,7 +289,7 @@ function newShip(id)
 			changeEl.style.backgroundSize = "100% 100%";
 			arrayShip[arrayShip.length] = id;
 			//alert(arrayShip);
-				if(arrayShip.length > 5){
+				if(grandArrayShip.length > 5){
 					table1.style.opacity = "1";
 				}
 				
