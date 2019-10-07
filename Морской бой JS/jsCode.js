@@ -28,8 +28,6 @@ var resetID = new Array();
 var checkQuantityShips = 0;
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 
-
-	
 			var table1 = document.getElementById('tableShot');
 			table1.style.opacity = "0.4";
 
@@ -49,9 +47,8 @@ function newShip(id)
 					return arrayShip;
 			}
 			
+
 			var onlyId = id.replace(/[^+\d]/g, '') - 0;
-
-
 
 				//подсчёт возможных продолжений для многопалубника
 				oneDeckShip[oneDeckShip.length]=onlyId -10;
@@ -154,15 +151,27 @@ function newShip(id)
 								var qShips2;
 								var qShips3;
 								checkQuantityShips = 2;
+									if (twoDeck < 1) {
+										alert("У вас лимит 2 палубных кораблей!")
+										return arrayShip;
+									}
 								alert("Its two Deck Ship!!! " + qShips);
 									if(grandArrayShipNum.indexOf(qShips) > -1){
 										qShips2 = qShips + (qShips - nearId);
 										checkQuantityShips = 3;
+											if (threeDeck < 1) {
+												alert("У вас лимит 3 палубных кораблей!")
+												return arrayShip;
+											}
 										alert("Its three Deck Ship!!! " + qShips2);
 											if (grandArrayShipNum.indexOf(qShips2) > -1) {
 												qShips3 = qShips2 + (qShips2 - qShips);
 												checkQuantityShips = 4;
 												alert("Its Four Deck Ship!!! " + qShips3);
+													if (fourDeck < 1) {
+														alert("У вас лимит 4 палубных кораблей!")
+														return arrayShip;
+													}
 											}
 												if (grandArrayShipNum.indexOf(qShips3) > -1) {
 													clearWrongId = false;
@@ -297,6 +306,7 @@ function newShip(id)
 	}
 }
 
+// функция обстрела кораблей
 function shot(id){
 	var equivalentId = id.replace(/[^+\d]/g, '') - 100;
 	if(arrayShip.length < 5){
