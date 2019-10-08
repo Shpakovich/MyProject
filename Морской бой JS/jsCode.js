@@ -25,6 +25,10 @@ var grandPosibleId = new Array();
 var grandPosibleIdNum = new Array();
 var resetID = new Array();
 
+var fleatEnemy = new Array();
+var newFleatEnemy = new Array();
+var table2WrongId = new Array();
+
 var checkQuantityShips = 0;
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 
@@ -39,14 +43,17 @@ function newShip(id)
 	checkQuantityShips = 0;
 	var clearWrongId = true;
 
-	for (;arrayShip.length < 16; arrayShip.length + 1)
+	for (;grandArrayShipNum.length < 21; arrayShip.length + 1)
 	{
 			
 			if(arrayShip.indexOf(id) > -1){
 					alert("alarm!");
 					return arrayShip;
 			}
-			
+			if ((oneDeck + twoDeck + threeDeck + fourDeck) == 0){
+				alert("Game Start!");
+				return arrayShip;
+			}
 
 			var onlyId = id.replace(/[^+\d]/g, '') - 0;
 
@@ -64,13 +71,18 @@ function newShip(id)
 				if(checkField == 0){
 				// сброс posibleId при начале нового корабля т.к. новые значения корабля
 					checkQuantityShips = 1;
+					if (oneDeck < 1) {
+						alert("У вас лимит 1 палубных кораблей!");
+						oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
+						return arrayShip;
+					}
+					grandArrayShipNum = [].concat(...grandArrayShip);
 					posibleId = [];
-					for(position = 0;position < 4; position++)
+					/*for(position = 0;position < 4; position++)
 					{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
-						//alert(deck);
 						checkTest = 1;
-					}
+					}*/
 							// чистим resetID,записываем в posibleId значения продолжения корабля
 							resetID = [];
 							posibleId[posibleId.length] = onlyId + 1;
@@ -79,6 +91,7 @@ function newShip(id)
 							posibleId[posibleId.length] = onlyId - 10;
 							//alert(posibleId + "  oneDeck  "+ resetID);
 				}
+
 				// если вторая ячейка корабля и он идёт в линию чистим posibleId от значений -10 и +10
 				if (arrayShip.length == 1) {
 					if (Math.floor(Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10) == Math.floor(Math.floor(onlyId) /10)) {
@@ -122,11 +135,7 @@ function newShip(id)
 			grandArrayShip[grandArrayShip.length] = arrayShip;
 			}
 		}
-
-		// проверка поз-ции нового корабля, нету ли его рядом со старым
-		grandPosibleId[grandPosibleId.length] = posibleId;
-		//раскрытие двухмерного массива grandPosibleId[] в одномерный grandPosibleIdNum
-		grandPosibleIdNum = [].concat(...grandPosibleId);
+			
 		//поиск текущего ID в значениях массива grandPosibleIdNum
 		if (grandPosibleIdNum.indexOf(onlyId) > -1) {
 			nearIdPosition = [];
@@ -134,7 +143,7 @@ function newShip(id)
 			nearIdPosition[nearIdPosition.length] = onlyId + 10;
 			nearIdPosition[nearIdPosition.length] = onlyId - 1;
 			nearIdPosition[nearIdPosition.length] = onlyId - 10;
-			alert("here is ships!!! " + nearIdPosition); //рядом стоит корабль
+			// alert("here is ships!!! " + nearIdPosition); //рядом стоит корабль
 			// делаем из многомерного массива grandArrayShip одномерный grandArrayShipNum c типом num
  			grandArrayShipNum = [].concat(...grandArrayShip);
 			for (var i = 0; i < grandArrayShipNum.length; i++) {
@@ -152,24 +161,25 @@ function newShip(id)
 								var qShips3;
 								checkQuantityShips = 2;
 									if (twoDeck < 1) {
-										alert("У вас лимит 2 палубных кораблей!")
+										alert("У вас лимит 2 палубных кораблей!");
+										oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
 										return arrayShip;
 									}
-								alert("Its two Deck Ship!!! " + qShips);
 									if(grandArrayShipNum.indexOf(qShips) > -1){
 										qShips2 = qShips + (qShips - nearId);
 										checkQuantityShips = 3;
 											if (threeDeck < 1) {
-												alert("У вас лимит 3 палубных кораблей!")
+												alert("У вас лимит 3 палубных кораблей!");
+												oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
 												return arrayShip;
 											}
-										alert("Its three Deck Ship!!! " + qShips2);
+										//alert("Its three Deck Ship!!! " + qShips2);
 											if (grandArrayShipNum.indexOf(qShips2) > -1) {
 												qShips3 = qShips2 + (qShips2 - qShips);
 												checkQuantityShips = 4;
-												alert("Its Four Deck Ship!!! " + qShips3);
 													if (fourDeck < 1) {
-														alert("У вас лимит 4 палубных кораблей!")
+														alert("У вас лимит 4 палубных кораблей!");
+														oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
 														return arrayShip;
 													}
 											}
@@ -177,6 +187,7 @@ function newShip(id)
 													clearWrongId = false;
 													alert("omg 5 Deck!!! " + qShips3);
 													checkQuantityShips = 5;
+													oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
 													return arrayShip;
 												}
 									}
@@ -184,6 +195,13 @@ function newShip(id)
 					}
 				}
 		}
+		 	if ((oneDeck + twoDeck + threeDeck + fourDeck) == 1){
+				grandArrayShipNum[grandArrayShipNum.length] = id;
+			}
+		//раскрытие двухмерного массива grandPosibleId[] в одномерный grandPosibleIdNum
+		grandPosibleId[grandPosibleId.length] = posibleId;
+		grandPosibleIdNum = [].concat(...grandPosibleId);
+		// проверка поз-ции нового корабля, нету ли его рядом со старым
 			if(clearWrongId) // при условии что onlyId в правильном положении
 			{
 				// Обработка края поля и добавления WrongId
@@ -204,14 +222,11 @@ function newShip(id)
 
 				if(wrongId.indexOf(onlyId) > -1){
 					alert("Dont do This!");
+					oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
 					return arrayShip;
 				}
 			}
-		/*добавить условие, что при поподании в here is ships!!!
-		проверяются поля рядом и при совпадении grandArrayShip
-		считается палубы корабле, else остаётся без изменений
-		*/
-
+		/*
 				// запись в массив deck 
 			if (checkTest == 0) {	
 				for(position = 0;position < oneDeckShip.length; position++)
@@ -219,8 +234,7 @@ function newShip(id)
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
 				}
 			}
-			
-			/*if (checkField === 1) 
+			if (checkField === 1) 
 			{
 						alert("new code");
 						var overlap = new Array();
@@ -291,33 +305,117 @@ function newShip(id)
 
 				if(checkQuantityShips == 5){
 						alert("Вы не можете строить более 4 палубного корабля");
+						oneDeckShip = oneDeckShip.slice([0],[oneDeckShip.length - 4]);
 						return arrayShip;
 				}
 
 			changeEl.style.background = "url(img/ships.jpg) center";
 			changeEl.style.backgroundSize = "100% 100%";
 			arrayShip[arrayShip.length] = id;
-			//alert(arrayShip);
-				if(grandArrayShip.length > 5){
+			if (grandArrayShipNum.length > 10) {
+				if (fleatEnemy.length < 100) {
+					generateEnemyField();
+				}
+			createPosibleId(randomInteger(fleatEnemy));
+			}
+				if((oneDeck + twoDeck + threeDeck + fourDeck) == 0){
 					table1.style.opacity = "1";
 				}
-				
+				console.log(grandArrayShip + '\n' + grandPosibleId + '\n' + grandArrayShipNum + '\n' + grandPosibleIdNum + '\n' + "..............."+ '\n');
 			return arrayShip;
 	}
 }
+		function generateEnemyField() {
+			for (let i = 1; i <= 100; i++) {
+   				fleatEnemy.push(i);
+			}
+		return fleatEnemy;
+		}
+
+		function coinToss() {
+    		return Math.floor(Math.random() * 2);
+		}
+		function randomInteger(fleatEnemy) {
+  		// случайное число
+  					do{
+  						var rand = fleatEnemy[Math.floor(Math.random() * fleatEnemy.length)];
+  					}while(fleatEnemy[rand] == undefined);
+  					//Math.floor(Math.random() * (fleatEnemy.length));
+  					if (Math.floor(Math.random() * 2)) {
+  						var randomizerDirection = 1;
+  					}else{randomizerDirection = 10; }
+  					
+  					newFleatEnemy[newFleatEnemy.length] = rand;
+  					newFleatEnemy[newFleatEnemy.length] = ((rand + randomizerDirection) != undefined) ? rand + randomizerDirection :
+  					((rand - randomizerDirection) != undefined) ? (rand - randomizerDirection) :
+  					-1;
+  					alert(newFleatEnemy);
+
+  					if((rand + randomizerDirection) != undefined){
+  					newFleatEnemy[newFleatEnemy.length] = rand + randomizerDirection;
+  					}else if((rand - randomizerDirection) != undefined){
+  						newFleatEnemy[newFleatEnemy.length] = rand - randomizerDirection;
+  					}
+ 					alert(newFleatEnemy);
+  				return Math.floor(rand);
+		}
+
+		function createPosibleId(rand){	
+				// Обработка края поля и добавления WrongId
+				if (((rand%10)!=0)&&((rand%10)!=1)) {
+					if(rand > 11){
+						table2WrongId[table2WrongId.length] = rand - 11;
+					}
+					if(rand > 9){
+						table2WrongId[table2WrongId.length] = rand - 9;
+					}
+					if(rand < 92){
+						table2WrongId[table2WrongId.length] = rand - 0 + 9;
+					}
+					if(rand < 89){
+						table2WrongId[table2WrongId.length] = rand -0 + 11;
+					}
+				}
+				if ((rand%10)==0) {
+					if(rand > 11){
+						table2WrongId[table2WrongId.length] = rand - 11;
+					}
+					if(rand < 92){
+						table2WrongId[table2WrongId.length] = rand - 0 + 9;
+					}
+				}
+				if ((rand%10)==1) {
+					if(rand > 9){
+						table2WrongId[table2WrongId.length] = rand - 9;
+					}
+					if(rand < 89){
+						table2WrongId[table2WrongId.length] = rand -0 + 11;
+					}
+				}
+		alert(rand + "  " +table2WrongId);
+		// Удаление эл-тов из массива-таблицы врага
+		delete fleatEnemy [rand - 1];//удалить тек. сгонерированны id
+			for (let i = 0; i < table2WrongId.length; i++) {
+				if (fleatEnemy.includes(table2WrongId[i])){
+					delete fleatEnemy[fleatEnemy.indexOf(table2WrongId[i])];
+					//newFleatEnemy[newFleatEnemy.length] = table2WrongId[i];
+				}
+				alert(rand);
+			}
+		}
+
 
 // функция обстрела кораблей
 function shot(id){
 	var equivalentId = id.replace(/[^+\d]/g, '') - 100;
-	if(arrayShip.length < 5){
-		return arrayShip.length;
+	alert(equivalentId);
+	if(grandArrayShipNum.length < 20){
+
+		return grandArrayShipNum.length;
 	}else{
-
 			var element = document.getElementById(id);
-			if(arrayShip.indexOf("id"+equivalentId) > -1)
+			if(grandArrayShipNum.indexOf("id"+equivalentId) > -1)
 			{
-
-				
 				element.style.background="url(img/explosion.jpg) center";
     			element.style.backgroundSize = "250% 250%";
     			//alert(equivalentId);
@@ -328,3 +426,5 @@ function shot(id){
 			}
 		}
 }
+
+//Генерация поля с кораблями бота
