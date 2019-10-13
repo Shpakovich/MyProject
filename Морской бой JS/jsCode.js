@@ -358,6 +358,9 @@ function newShip(id)
   					}
  					alert(newFleatEnemy);
   				return Math.floor(rand);
+  				ceil — округляет все в большую сторону,
+				floor — в меньшую,
+				round — меньше 0.5 — в меньшую, больше 0.5 — в большую.
 		}
 
 		function createPosibleId(rand){	
