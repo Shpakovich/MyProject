@@ -1,9 +1,14 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
 .main{
 	display: flex;
 	flex-direction: column;
 	min-height: 95vh;
 	min-width: 90vh;
-	height: 100%;
+	height: 100vh;
 	width: 100%;
 	border:1px solid pink;
 	background-image: url(img/liberty.jpg) ;
@@ -27,19 +32,14 @@ height: 70vh;
 
 .table1{
 	width: 50%;
-	border:2px solid red;
 	opacity: 0.7;
 }
 
 .table2{
 	width: 50%;
-	border:2px solid green;
 	opacity: 0.7;
 }
 
-.test{
-	border:2px solid blue;
-}
 .help{
 	margin-left: 60px;
 	font-size: 4vh;
@@ -78,8 +78,7 @@ td{
 .footer{
 	display: flex;
 	flex-direction: row;
-	border:2px solid orange;
-	height: 21vh;
+	height: auto;
 }
 
 #ownShips{

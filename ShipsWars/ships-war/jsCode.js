@@ -11,23 +11,25 @@ el2.onclick = function() {
     el2.style.backgroundSize = "160% 160%";
 }
 */
-var arrayShip = new Array();
-var grandArrayShip = new Array();
-var grandArrayShipNum = new Array();
-var wrongId = new Array();
-var oneDeckShip = new Array();
-var deck = new Array();
-var continueShips = new Array();
-var deckShips = new Array();
-var nearIdPosition = new Array();
-var posibleId = new Array();
-var grandPosibleId = new Array();
-var grandPosibleIdNum = new Array();
-var resetID = new Array();
 
-var fleatEnemy = new Array();
-var newFleatEnemy = new Array();
-var table2WrongId = new Array();
+
+var arrayShip = [];
+var grandArrayShip = [];
+var grandArrayShipNum = [];
+var wrongId = [];
+var oneDeckShip = [];
+var deck = [];
+var continueShips = [];
+var deckShips = [];
+var nearIdPosition = [];
+var posibleId = [];
+var grandPosibleId = [];
+var grandPosibleIdNum = [];
+var resetID = [];
+
+var fleatEnemy = [];
+var newFleatEnemy = [];
+var table2WrongId = [];
 
 var checkQuantityShips = 0;
 var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
@@ -35,7 +37,7 @@ var oneDeck = 4,twoDeck = 3, threeDeck = 2, fourDeck =1;
 			var table1 = document.getElementById('tableShot');
 			table1.style.opacity = "0.4";
 
-function newShip(id)
+ function newShip(id)
 {
 	var changeEl = document.getElementById(id);
 	var checkField = 0;
@@ -45,12 +47,12 @@ function newShip(id)
 
 	for (;grandArrayShipNum.length < 21; arrayShip.length + 1)
 	{
-			
+
 			if(arrayShip.indexOf(id) > -1){
 					alert("alarm!");
 					return arrayShip;
 			}
-			if ((oneDeck + twoDeck + threeDeck + fourDeck) == 0){
+			if ((oneDeck + twoDeck + threeDeck + fourDeck) === 0){
 				alert("Game Start!");
 				return arrayShip;
 			}
@@ -60,15 +62,15 @@ function newShip(id)
 				//подсчёт возможных продолжений для многопалубника
 				oneDeckShip[oneDeckShip.length]=onlyId -10;
 				oneDeckShip[oneDeckShip.length]=onlyId -1;
-				oneDeckShip[oneDeckShip.length]=onlyId -0 +1;
-				oneDeckShip[oneDeckShip.length]=onlyId -0 +10;
+				oneDeckShip[oneDeckShip.length]= onlyId + 1;
+				oneDeckShip[oneDeckShip.length]=onlyId +10;
 
 
 				if(oneDeckShip.indexOf(onlyId)>-1){
 					checkField = 1;
 				}
 
-				if(checkField == 0){
+				if(checkField === 0){
 				// сброс posibleId при начале нового корабля т.к. новые значения корабля
 					checkQuantityShips = 1;
 					if (oneDeck < 1) {
@@ -104,8 +106,8 @@ function newShip(id)
 
  			if (arrayShip.length > 0){
 				// это историческая хуйня!
-			
-				if (checkField === 1) 
+
+				if (checkField === 1)
 				{
 					// проверка направления корабля
 					var first = Math.floor(arrayShip[0].replace(/[^+\d]/g, '') - 0) /10;
@@ -135,7 +137,7 @@ function newShip(id)
 			grandArrayShip[grandArrayShip.length] = arrayShip;
 			}
 		}
-			
+
 		//поиск текущего ID в значениях массива grandPosibleIdNum
 		if (grandPosibleIdNum.indexOf(onlyId) > -1) {
 			nearIdPosition = [];
@@ -227,14 +229,14 @@ function newShip(id)
 				}
 			}
 		/*
-				// запись в массив deck 
-			if (checkTest == 0) {	
+				// запись в массив deck
+			if (checkTest == 0) {
 				for(position = 0;position < oneDeckShip.length; position++)
 				{
 						deck[deck.length] = arrayShip.indexOf("id" + oneDeckShip[position]);
 				}
 			}
-			if (checkField === 1) 
+			if (checkField === 1)
 			{
 						alert("new code");
 						var overlap = new Array();
@@ -246,7 +248,7 @@ function newShip(id)
 							overlap2 = [];
 							alert("reset");
 						}
-							
+
 							for(p = 0; p < arrayShip.length; p++)
 								{
 									for (i = 0; i < oneDeckShip.length; i++)
@@ -267,11 +269,11 @@ function newShip(id)
 				  				alert("Array2 over " + overlap2);
 				  				alert("Array2 OMG " + overlap2.length);
 							}
-							
+
 							var filtered = overlap2.filter(function (el) {
 				 			return el != null;
 							});
-							alert("Array2 new " + filtered);	
+							alert("Array2 new " + filtered);
 							var maxValueNew = filtered.length;
 							alert(maxValueNew);
 			}*/
@@ -344,7 +346,7 @@ function newShip(id)
   					if (Math.floor(Math.random() * 2)) {
   						var randomizerDirection = 1;
   					}else{randomizerDirection = 10; }
-  					
+
   					newFleatEnemy[newFleatEnemy.length] = rand;
   					newFleatEnemy[newFleatEnemy.length] = ((rand + randomizerDirection) != undefined) ? rand + randomizerDirection :
   					((rand - randomizerDirection) != undefined) ? (rand - randomizerDirection) :
@@ -358,12 +360,9 @@ function newShip(id)
   					}
  					alert(newFleatEnemy);
   				return Math.floor(rand);
-  				ceil — округляет все в большую сторону,
-				floor — в меньшую,
-				round — меньше 0.5 — в меньшую, больше 0.5 — в большую.
 		}
 
-		function createPosibleId(rand){	
+		function createPosibleId(rand){
 				// Обработка края поля и добавления WrongId
 				if (((rand%10)!=0)&&((rand%10)!=1)) {
 					if(rand > 11){
@@ -429,5 +428,7 @@ function shot(id){
 			}
 		}
 }
+
+export default newShip();
 
 //Генерация поля с кораблями бота
