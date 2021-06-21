@@ -3,6 +3,14 @@ import EnemyField from './enemyField';
 let cellArray = [];
 let activeCells = [];
 let invalidCells = [];
+let neighborsCells = [];
+const neighborsCellsArray = [];
+let shipsCount = {
+    'singleDeck': 4,
+    'doubleDeck': 3,
+    'threeDeck': 2,
+    'fourDeck': 1
+};
 
 let EnemyFieldEl = new EnemyField();
 EnemyFieldEl.blockField();
@@ -30,7 +38,7 @@ function clickCell(index) {
 
 function addToActiveCells(index) {
     activeCells.push(index);
-    console.log(activeCells);
+    // console.log(activeCells);
     changeInvalidCells(index);
 }
 
@@ -55,6 +63,51 @@ function changeInvalidCells(index) {
                 invalidCells.push(index + calcInvalidCells[i]);
             }
         }
+    checkShipsCount(index);
+    // console.log(invalidCells);
+}
 
-    console.log(invalidCells);
+function checkShipsCount(index) {
+    const calcNeighborsCells = [-10, -1, 1, 10];
+
+    neighborsCells = [];
+    for (let i = 0; i < 4; i++) {
+        neighborsCells.push(index + calcNeighborsCells[i]);
+    }
+
+    // проверить есть ли рядом активное поле в neighborsCellsArray и выдаём направление
+    // если есть определяем направление
+
+    let directionString = '';
+    function isNeighborsCells ( element, index1 ) {
+        let direction = -1;
+        for (let i = 0; i < element.length;i++) {
+            if (direction === -1) {
+                direction = element[i].indexOf(index);
+            }
+        }
+        if (direction === 1 || direction === 2) {
+            directionString = 'horizontal';
+            neighborsCellsArray[index1].push(neighborsCells);
+        } else if (direction === 0 || direction === 3) {
+            directionString = 'vertical';
+            neighborsCellsArray[index1].push(neighborsCells);
+        }
+
+        return directionString !== '';
+    }
+
+    if (neighborsCellsArray.some(isNeighborsCells)) {
+        return true;
+    } else {
+        neighborsCellsArray.push([neighborsCells]);
+    }
+
+    console.log(neighborsCellsArray);
+
+
+    // для первого запуска
+    if (!neighborsCellsArray.length) {
+        neighborsCellsArray.push([neighborsCells]);
+    }
 }
