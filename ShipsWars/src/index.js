@@ -81,17 +81,17 @@ function checkShipsCount(index) {
     let directionString = '';
     function isNeighborsCells ( element, index1 ) {
         let direction = -1;
-        for (let i = 0; i < element.length;i++) {
+        for (let i = 0; i < element?.neighborsCells.length;i++) {
             if (direction === -1) {
-                direction = element[i].indexOf(index);
+                direction = element?.neighborsCells[i].indexOf(index);
             }
         }
         if (direction === 1 || direction === 2) {
             directionString = 'horizontal';
-            neighborsCellsArray[index1].push(neighborsCells);
+            neighborsCellsArray[index1].neighborsCells.push(neighborsCells);
         } else if (direction === 0 || direction === 3) {
             directionString = 'vertical';
-            neighborsCellsArray[index1].push(neighborsCells);
+            neighborsCellsArray[index1].neighborsCells.push(neighborsCells);
         }
 
         return directionString !== '';
@@ -100,7 +100,7 @@ function checkShipsCount(index) {
     if (neighborsCellsArray.some(isNeighborsCells)) {
         return true;
     } else {
-        neighborsCellsArray.push([neighborsCells]);
+        neighborsCellsArray.push({'neighborsCells': [neighborsCells]});
     }
 
     console.log(neighborsCellsArray);
@@ -108,6 +108,6 @@ function checkShipsCount(index) {
 
     // для первого запуска
     if (!neighborsCellsArray.length) {
-        neighborsCellsArray.push([neighborsCells]);
+        neighborsCellsArray.push({'neighborsCells': [neighborsCells]});
     }
 }
